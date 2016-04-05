@@ -1,57 +1,93 @@
 from currency_converter import *
 
+
+
+conversation_rates {
+    'USD': 1,
+    'EUR': .87,
+    'JPN', 1.2
+}
+
+
+currency_symbols {
+    '$': 'USD'
+    '€': 'EUR'
+    '¥', 'YEN'
+}
+
+
 class Currency:
-    def __init__(self, currency_code, amount):
+
+    def __init__(self, currency_code, amount = 0):
         self.currency_code = currency_code
         self.amount = amount
 
 
-    def __str__(self):
-        return str(self.amount) + ' ' + se.currency.code
-        #return 'Currency(Amount={}, currency_code=\'{}')'.format(self.amount, self.currency_code)
-
-
     def __eq__(self, other):
-        if self.amount == other.amount and self.currency_code == other.currency_code:
-            return True
-        else:
-            return False
+        return self.amount == other.amount and self.currency_code == other.currency_code:
 
-        #if self.amount == other.amount:
-            # if self.amount == other.amount:
-            #     return True
-            #
-            # else:
-            #   return False
-    # else:
-    #     return False
 
-    # def __ne__(self, other):
-    #      return self.amount == other.amount and self.currency_code == other.currency_code
+    def __str__(self):
+        return str(self.amount) + ' ' + (self.currency_code)
 
 
     def __add__(self, other):
-            return self.amount + other.amount and self.currency_code == other.currency_code
+        if self.currency_code == other.currency_code:
+            return Currency(self.amount + other.amount, self.currency_code)
 
 
     def __sub__(self, other):
-        return self.amount - other.amount
-
-    def """Must raise a DifferentCurrencyCodeError when you try to add or subtract two
-        Currency objects with different currency codes."""
-
-        class DifferentCurrencyCodeError(Exception)
-
-        raise DifferentCurrencyCodeError:
+        if self.currency_code == other.currency_code:
+            return Currency(self.amount - other.amount, self.currency_code)
 
 
-    def Must be able to be multiplied by an int or float and return a Currency object.
+    def __sub__(self, other):
+        if self.currency_code == other.currency_code:
+            return Currency(self.amount - other.amount, self.currency_code)
+
+
+    def symbol_converter(self, currency_code):
+        if not self.currency_code.isalnum():
+             self.amount = self.currency_code.strip('0-9')
+            currency_code = ''.join(i for i in currency_code if i.isnum() or i  == '.')
 
 
 
-    Currency() must be able to take one argument with a currency symbol embedded in it, like "$1.20" or "€ 7.00", and figure out the correct
-    currency code. It can also take two arguments, one being the amount and the other being the currency code.
+class DifferentCurrencyCodeError(Exception):
+    pass
 
+
+
+        raise DifferentCurrencyCodeError
+
+
+    def __mul__(self, other):
+        #Must be able to be multiplied by an int or float and return a Currency object.
+
+
+
+
+
+Currency() must be able to take one argument with a currency symbol embedded in it, like "$1.20" or "€ 7.00", and
+figure out the correct currency code. It can also take two arguments, one being the amount and the other being
+ the currency code.
+
+    def __lt__(self, other):
+            return self.amount + other.amount and self.currency_code == other.currency_code
+
+    def __gt__(self, other):
+            return self.amount + other.amount and self.currency_code == other.currency_code
+
+    def __le__(self, other):
+            return self.amount + other.amount and self.currency_code == other.currency_code
+
+    def __ge__(self, other):
+            return self.amount + other.amount and self.currency_code == other.currency_code
+
+
+    def __str__(self):
+        return str(self.amount) + ' ' + self.currency.code
+        #return 'Currency(Amount={}, currency_code=\'{}')'.format(self.amount, self.currency_code)
 
 
 Must NOT equal another Currency object with different amount or currency code.
@@ -61,13 +97,3 @@ Must raise a DifferentCurrencyCodeError when you try to add or subtract two Curr
 Must be able to be multiplied by an int or float and return a Currency object.
 Currency() must be able to take one argument with a currency symbol embedded in it, like "$1.20" or "€ 7.00", and figure
 out the correct currency code. It can also take two arguments, one being the amount and the other being the currency code.
-    #five.dollars.amount = int(input())
-    # def __add__(self, value):
-    # return '{} plus {}'.format(self.value, value)
-
-    # def __eq__(self):
-
-
-    # def __eq__(self, other):
-    #     return self.value == other.value
-    #     Must equal another Currency object with the same amount and currency code.
