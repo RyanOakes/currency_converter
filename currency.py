@@ -12,7 +12,10 @@ class Currency:
 
 
     def __eq__(self, other):
-        return self.amount == other.amount and self.currency_code == other.currency_code
+        if self.amount == other.amount and self.currency_code == other.currency_code:
+            return True
+        else:
+            return False
 
         #if self.amount == other.amount:
             # if self.amount == other.amount:
@@ -28,7 +31,7 @@ class Currency:
 
 
     def __add__(self, other):
-            return self.amount + other.amount
+            return self.amount + other.amount and self.currency_code == other.currency_code
 
 
     def __sub__(self, other):

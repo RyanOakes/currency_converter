@@ -31,8 +31,19 @@ cc.convert
 
 currency_converter.set_currenctly_codes#sending info
 
+class Converter:
+    def __init__(self.amount, sign=None):
+        if self.sign == None:
 
+        else:
+            self.amount =
+            self.sign =
 
+mine = Converter($5.00)
+yours = Convterter(5.00, '$')
+
+#rounding
+"%.2f%"
 
 Must be initialized with a dictionary of currency codes to conversion rates (see link to rates below).
 At first, just make this work with two currency codes and conversation rates, with one rate being 1.0 and
